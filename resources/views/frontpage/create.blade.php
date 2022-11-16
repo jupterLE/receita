@@ -8,9 +8,9 @@
     {!!Form::label('nome', 'Nome') !!}
     {!!Form::text('nome','',['class'=>'form-control container-sm','required','placeholder'=>'Nome da Receita']) !!}
     {!!Form::label('conteudo', 'Conteudo')!!}
-    {!!Form::text('conteudo','',['class' => 'form-control container-sm', 'required', 'placeholder'=>'Conteudo'])!!}
+    {!!Form::text('conteudo','',['class' => 'form-control container-sm', 'required', 'placeholder'=>'botar a receita'])!!}
     {!!Form::label('imagem', 'Imagem')!!}
-    {!!Form::text('imagem','',['class' => 'form-control container-sm', 'required', 'placeholder'=>'Aqui fica a imagem'])!!}
+    {!!Form::text('imagem','',['class' => 'form-control container-sm', 'required', 'placeholder'=>'Aqui fica a imagem URL'])!!}
     
     <br>
     {!! Form::submit('Salvar', ['class'=>'btn btn-primary']) !!}
