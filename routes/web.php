@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DadosreceitasController;
+use App\Http\Controllers\ReceitasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +14,9 @@ use App\Http\Controllers\DadosreceitasController;
 |
 */
 
-Route::get('/', function () {
-    return view('layout.app');
-});
+Route::resource('frontpage',ReceitasController::class);
 
-//Route::resource('',::class);//
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

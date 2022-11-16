@@ -14,8 +14,8 @@ class ReceitasController extends Controller
      */
     public function index()
     {
-       // $ = ::all();
-       // return view('frontpage.index', array(''=>$, 'busca'=>null));
+        $receitas = Receitas::all();
+       return view('frontpage.index', array('receitas'=>$receitas, 'busca'=>null));
     }
 
     /**
@@ -25,7 +25,7 @@ class ReceitasController extends Controller
      */
     public function create()
     {
-        //
+      return view('frontpage/create',[]);
     }
 
     /**
@@ -36,12 +36,12 @@ class ReceitasController extends Controller
      */
     public function store(Request $request)
     {
-       // $ = new Receita();
-        //$ ->nome = $request->input('nome');
-        //$ ->conteudo = $request->input('conteudo');
-        //$ ->imagem = $request->input('imagem');
-        //if($->save()){
-         //   return redirect('');
+        $receitas = new Receitas();
+        $receitas ->nome = $request->input('nome');
+        $receitas ->conteudo = $request->input('conteudo');
+        $receitas ->imagem = $request->input('imagem');
+        if($receitas->save()){
+            return redirect('frontpage');
         }
     }
 
@@ -51,10 +51,10 @@ class ReceitasController extends Controller
      * @param  \App\Models\Receitas  $receitas
      * @return \Illuminate\Http\Response
      */
-    public function show(Receitas $receitas)
+    public function show($id)
     {
-       // $ = ::find($id);
-      //  return view('frontpage.show', array(''=>$));
+        $receita = Receitas::find($id);
+        return view('frontpage.show', ['receita'=>$receita]);
     }
 
     /**
@@ -63,10 +63,10 @@ class ReceitasController extends Controller
      * @param  \App\Models\Receitas  $receitas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Receitas $receitas)
+    public function edit($id)
     {
-        //$ = ::find($id)
-       // return view('.edit',array(''=>$));
+        $receita = Receitas::find($id);
+        return view('frontpage.edit',['receita'=>$receita]);
     }
 
     /**
@@ -87,12 +87,12 @@ class ReceitasController extends Controller
      * @param  \App\Models\Receitas  $receitas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Receitas $receitas)
+    public function destroy($id)
     {
-        //$ = ::find($id);
-       // $ ->delete();
-      //  Session::flash('mensagem', 'receita excluida com sucesso!');
-       // return redirect(url('/'));
+        $receita = Receitas::find($id);
+        $receita ->delete();
+        Session::flash('mensagem', 'receita excluida com sucesso!');
+        return redirect(url('receitas/'));
 
     }
 }

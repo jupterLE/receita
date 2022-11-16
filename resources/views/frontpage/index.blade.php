@@ -1,31 +1,26 @@
-@extends('layout.php')
-@section('title', 'Listagem de ')
 @section('content')
+@extends('layout.app')
+@section('title', 'Listagem de receitas')
     <h1>Listagem de receitas</h1>
+    
     @if(Session::has('mensagem'))
         <div class="alert alert-info">
             {{Session::get('mensagem')}}
         </div>
     @endif
-    <ul>
-      <!--  @foreach () 
-        <li>
-            <a href= "{{url('/'.$->id)}}">
-                {{$->nome}}</a>
-        </li>
-        @endforeach 
-</ul>
-@endsection 
+ 
 <br />
-<a class="btn btn-success" href="{{url('')}}">Adicionar</a>
+<a class="btn btn-success" href="{{url('frontpage/create')}}">Adicionar</a>
 <br><br>
 <table class="table table-striped">
-    @foreach ($ as $)
+    @foreach ($receitas as $receita)
         <tr>
             <td>
-                <a href="{{url(''.$->id)}}">{{$->nome}}</a>
+                <a href="{{url('frontpage/'.$receita->id)}}">
+                    {{$receita->nome}}</a>
 </td>
 </tr>
 @endforeach
 </table>
-@endsection    -->
+@endsection
+   
